@@ -1,3 +1,8 @@
+import { API } from "./config/config.js"
+
+
+
+
 // Simulate a 3-second loading time
 function showLoader() {
   const loaderContainer = document.getElementById("loaderContainer");
@@ -49,7 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const response = await fetch("http://localhost:3000/users", {
+    const response = await fetch(`${API.BASE_URL}/users`, {
       method: "GET",
     });
     const users = await response.json();
@@ -92,7 +97,7 @@ window.addEventListener("DOMContentLoaded", () => {
       return alert("Password doesn't matched!!");
     }
 
-    const response = await fetch("http://localhost:3000/users", {
+    const response = await fetch(`${API.BASE_URL}/users`, {
       method: "GET",
     });
     const users = await response.json();
@@ -104,7 +109,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (user) {
       return alert("User Already Exist!!");
     } else {
-      await fetch("http://localhost:3000/users", {
+      await fetch(`${API.BASE_URL}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

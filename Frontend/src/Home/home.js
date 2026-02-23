@@ -1,3 +1,4 @@
+import { API } from "../config/config.js";
 // Cart functionality
 let cart = [];
 
@@ -69,13 +70,13 @@ async function saveCartToBackend() {
 
   try {
     // First, delete old cart for this user if exists
-    const cartsResponse = await fetch("http://localhost:3000/carts");
+    const cartsResponse = await fetch(`${API.BASE_URL}/carts`);
     const carts = await cartsResponse.json();
     const userCart = carts.find((c) => c.userId === user.id);
 
     if (userCart) {
       // Update existing cart
-      await fetch(`http://localhost:3000/carts/${userCart.id}`, {
+      await fetch(`${API.BASE_URL}/carts/${userCart.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +89,7 @@ async function saveCartToBackend() {
       });
     } else {
       // Create new cart
-      await fetch("http://localhost:3000/carts", {
+      await fetch(`${API.BASE_URL}/carts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
