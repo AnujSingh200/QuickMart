@@ -68,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
       alert("Login Successfull...!!");
       // Save user data to localStorage
       localStorage.setItem("loggedInUser", JSON.stringify(user));
-      window.location.href = "./src/Home/home.html";
+      window.location.href = "src/Home/home.html";
     }
   });
 
